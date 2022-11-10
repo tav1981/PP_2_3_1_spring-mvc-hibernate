@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>пользователи</title>
+</head>
+<body>
+
+<table class="table tabla-dark">
+  <thead>
+  <tr>
+    <th scope="col">FirstName</th>
+    <th scope="col">LastName</th>
+    <th scope="col">Email</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.getFirstName()}"/>
+    <td th:text="${user.getLastName()}"/>
+    <td th:text="${user.getEmail()}"/>
+    <td>
+      <form action="/edit" target="_self">
+        <div>
+          <button name="edit" id="edit" th:value="${user.getId()}">редактировать</button>
+        </div>
+      </form>
+    </td>
+    <td>
+      <form action="/users" target="_self">
+        <div>
+          <button name="delete" id="delete" th:value="${user.getId()}">x</button>
+        </div>
+      </form>
+    </td>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<form action="/edit" target="_self" >
+  <div>
+    <button name="newPole" id="newPole" value="1" >+</button>
+  </div>
+</form>
+
+</body>
+<a href="/"><-- На главную</a>
+<h6>A</h6>
+</html>
